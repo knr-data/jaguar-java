@@ -1,0 +1,238 @@
+// File generated from our OpenAPI spec
+package com.jaguar.model.terminal;
+
+import com.google.gson.annotations.SerializedName;
+import com.jaguar.Jaguar;
+import com.jaguar.exception.JaguarException;
+import com.jaguar.model.Address;
+import com.jaguar.model.HasId;
+import com.jaguar.model.MetadataStore;
+import com.jaguar.net.ApiResource;
+import com.jaguar.net.RequestOptions;
+import com.jaguar.param.terminal.LocationCreateParams;
+import com.jaguar.param.terminal.LocationListParams;
+import com.jaguar.param.terminal.LocationRetrieveParams;
+import com.jaguar.param.terminal.LocationUpdateParams;
+import java.util.Map;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@EqualsAndHashCode(callSuper = false)
+public class Location extends ApiResource implements HasId, MetadataStore<Location> {
+  @SerializedName("address")
+  Address address;
+
+  /** Always true for a deleted object. */
+  @SerializedName("deleted")
+  Boolean deleted;
+
+  /** The display name of the location. */
+  @SerializedName("display_name")
+  String displayName;
+
+  /** Unique identifier for the object. */
+  @Getter(onMethod_ = {@Override})
+  @SerializedName("id")
+  String id;
+
+  /**
+   * Has the value {@code true} if the object exists in live mode or the value {@code false} if the
+   * object exists in test mode.
+   */
+  @SerializedName("livemode")
+  Boolean livemode;
+
+  /**
+   * Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach
+   * to an object. This can be useful for storing additional information about the object in a
+   * structured format.
+   */
+  @Getter(onMethod_ = {@Override})
+  @SerializedName("metadata")
+  Map<String, String> metadata;
+
+  /**
+   * String representing the object's type. Objects of the same type share the same value.
+   *
+   * <p>Equal to {@code terminal.location}.
+   */
+  @SerializedName("object")
+  String object;
+
+  /** Retrieves a <code>Location</code> object. */
+  public static Location retrieve(String location) throws JaguarException {
+    return retrieve(location, (Map<String, Object>) null, (RequestOptions) null);
+  }
+
+  /** Retrieves a <code>Location</code> object. */
+  public static Location retrieve(String location, RequestOptions options) throws JaguarException {
+    return retrieve(location, (Map<String, Object>) null, options);
+  }
+
+  /** Retrieves a <code>Location</code> object. */
+  public static Location retrieve(
+      String location, Map<String, Object> params, RequestOptions options) throws JaguarException {
+    String url =
+        String.format(
+            "%s%s",
+            Jaguar.getApiBase(),
+            String.format("/v1/terminal/locations/%s", ApiResource.urlEncodeId(location)));
+    return ApiResource.request(ApiResource.RequestMethod.GET, url, params, Location.class, options);
+  }
+
+  /** Retrieves a <code>Location</code> object. */
+  public static Location retrieve(
+      String location, LocationRetrieveParams params, RequestOptions options)
+      throws JaguarException {
+    String url =
+        String.format(
+            "%s%s",
+            Jaguar.getApiBase(),
+            String.format("/v1/terminal/locations/%s", ApiResource.urlEncodeId(location)));
+    return ApiResource.request(ApiResource.RequestMethod.GET, url, params, Location.class, options);
+  }
+
+  /**
+   * Creates a new <code>Location</code> object. For further details, including which address fields
+   * are required in each country, see the <a
+   * href="https://stripe.com/docs/terminal/fleet/locations">Manage locations</a> guide.
+   */
+  public static Location create(Map<String, Object> params) throws JaguarException {
+    return create(params, (RequestOptions) null);
+  }
+
+  /**
+   * Creates a new <code>Location</code> object. For further details, including which address fields
+   * are required in each country, see the <a
+   * href="https://stripe.com/docs/terminal/fleet/locations">Manage locations</a> guide.
+   */
+  public static Location create(Map<String, Object> params, RequestOptions options)
+      throws JaguarException {
+    String url = String.format("%s%s", Jaguar.getApiBase(), "/v1/terminal/locations");
+    return ApiResource.request(
+        ApiResource.RequestMethod.POST, url, params, Location.class, options);
+  }
+
+  /**
+   * Creates a new <code>Location</code> object. For further details, including which address fields
+   * are required in each country, see the <a
+   * href="https://stripe.com/docs/terminal/fleet/locations">Manage locations</a> guide.
+   */
+  public static Location create(LocationCreateParams params) throws JaguarException {
+    return create(params, (RequestOptions) null);
+  }
+
+  /**
+   * Creates a new <code>Location</code> object. For further details, including which address fields
+   * are required in each country, see the <a
+   * href="https://stripe.com/docs/terminal/fleet/locations">Manage locations</a> guide.
+   */
+  public static Location create(LocationCreateParams params, RequestOptions options)
+      throws JaguarException {
+    String url = String.format("%s%s", Jaguar.getApiBase(), "/v1/terminal/locations");
+    return ApiResource.request(
+        ApiResource.RequestMethod.POST, url, params, Location.class, options);
+  }
+
+  /**
+   * Updates a <code>Location</code> object by setting the values of the parameters passed. Any
+   * parameters not provided will be left unchanged.
+   */
+  @Override
+  public Location update(Map<String, Object> params) throws JaguarException {
+    return update(params, (RequestOptions) null);
+  }
+
+  /**
+   * Updates a <code>Location</code> object by setting the values of the parameters passed. Any
+   * parameters not provided will be left unchanged.
+   */
+  @Override
+  public Location update(Map<String, Object> params, RequestOptions options)
+      throws JaguarException {
+    String url =
+        String.format(
+            "%s%s",
+            Jaguar.getApiBase(),
+            String.format("/v1/terminal/locations/%s", ApiResource.urlEncodeId(this.getId())));
+    return ApiResource.request(
+        ApiResource.RequestMethod.POST, url, params, Location.class, options);
+  }
+
+  /**
+   * Updates a <code>Location</code> object by setting the values of the parameters passed. Any
+   * parameters not provided will be left unchanged.
+   */
+  public Location update(LocationUpdateParams params) throws JaguarException {
+    return update(params, (RequestOptions) null);
+  }
+
+  /**
+   * Updates a <code>Location</code> object by setting the values of the parameters passed. Any
+   * parameters not provided will be left unchanged.
+   */
+  public Location update(LocationUpdateParams params, RequestOptions options)
+      throws JaguarException {
+    String url =
+        String.format(
+            "%s%s",
+            Jaguar.getApiBase(),
+            String.format("/v1/terminal/locations/%s", ApiResource.urlEncodeId(this.getId())));
+    return ApiResource.request(
+        ApiResource.RequestMethod.POST, url, params, Location.class, options);
+  }
+
+  /** Returns a list of <code>Location</code> objects. */
+  public static LocationCollection list(Map<String, Object> params) throws JaguarException {
+    return list(params, (RequestOptions) null);
+  }
+
+  /** Returns a list of <code>Location</code> objects. */
+  public static LocationCollection list(Map<String, Object> params, RequestOptions options)
+      throws JaguarException {
+    String url = String.format("%s%s", Jaguar.getApiBase(), "/v1/terminal/locations");
+    return ApiResource.requestCollection(url, params, LocationCollection.class, options);
+  }
+
+  /** Returns a list of <code>Location</code> objects. */
+  public static LocationCollection list(LocationListParams params) throws JaguarException {
+    return list(params, (RequestOptions) null);
+  }
+
+  /** Returns a list of <code>Location</code> objects. */
+  public static LocationCollection list(LocationListParams params, RequestOptions options)
+      throws JaguarException {
+    String url = String.format("%s%s", Jaguar.getApiBase(), "/v1/terminal/locations");
+    return ApiResource.requestCollection(url, params, LocationCollection.class, options);
+  }
+
+  /** Deletes a <code>Location</code> object. */
+  public Location delete() throws JaguarException {
+    return delete((Map<String, Object>) null, (RequestOptions) null);
+  }
+
+  /** Deletes a <code>Location</code> object. */
+  public Location delete(RequestOptions options) throws JaguarException {
+    return delete((Map<String, Object>) null, options);
+  }
+
+  /** Deletes a <code>Location</code> object. */
+  public Location delete(Map<String, Object> params) throws JaguarException {
+    return delete(params, (RequestOptions) null);
+  }
+
+  /** Deletes a <code>Location</code> object. */
+  public Location delete(Map<String, Object> params, RequestOptions options)
+      throws JaguarException {
+    String url =
+        String.format(
+            "%s%s",
+            Jaguar.getApiBase(),
+            String.format("/v1/terminal/locations/%s", ApiResource.urlEncodeId(this.getId())));
+    return ApiResource.request(
+        ApiResource.RequestMethod.DELETE, url, params, Location.class, options);
+  }
+}
