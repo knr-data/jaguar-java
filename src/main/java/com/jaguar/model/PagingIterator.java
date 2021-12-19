@@ -12,14 +12,14 @@ public class PagingIterator<T extends HasId> extends ApiResource implements Iter
   private final String url;
 
   @SuppressWarnings("rawtypes")
-  private final Class<? extends StripeCollectionInterface> collectionType;
+  private final Class<? extends JaguarCollectionInterface> collectionType;
 
-  private StripeCollectionInterface<T> currentCollection;
+  private JaguarCollectionInterface<T> currentCollection;
   private Iterator<T> currentDataIterator;
 
   private String lastId;
 
-  PagingIterator(final StripeCollectionInterface<T> stripeCollection) {
+  PagingIterator(final JaguarCollectionInterface<T> stripeCollection) {
     this.url = Jaguar.getApiBase() + stripeCollection.getUrl();
 
     this.collectionType = stripeCollection.getClass();
@@ -73,7 +73,7 @@ public class PagingIterator<T extends HasId> extends ApiResource implements Iter
   }
 
   @SuppressWarnings("unchecked")
-  private StripeCollectionInterface<T> list(
+  private JaguarCollectionInterface<T> list(
       final Map<String, Object> params, final RequestOptions options) throws Exception {
     return ApiResource.requestCollection(url, params, collectionType, options);
   }

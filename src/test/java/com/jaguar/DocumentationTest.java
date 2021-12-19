@@ -72,7 +72,7 @@ public class DocumentationTest {
   }
 
   @Test
-  public void testReadMeContainsJaguarVersionThatMatches() throws IOException {
+  public void testReadMeContainsStripeVersionThatMatches() throws IOException {
     // this will be very flaky, but we want to ensure that the readme is correct.
     final File readmeFile = new File("README.md").getAbsoluteFile();
 

@@ -6,7 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
 
-public class StripeRawJsonObjectDeserializer implements JsonDeserializer<JaguarRawJsonObject> {
+public class JaguarRawJsonObjectDeserializer implements JsonDeserializer<JaguarRawJsonObject> {
   /** Deserializes a JSON payload into a {@link JaguarRawJsonObject} object. */
   @Override
   public JaguarRawJsonObject deserialize(

@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;
 
-public class StripeResponseTest extends BaseJaguarTest {
+public class JaguarResponseTest extends BaseJaguarTest {
   @Test
   public void testResponseIncluded() throws JaguarException {
     final String idempotencyKey = UUID.randomUUID().toString();

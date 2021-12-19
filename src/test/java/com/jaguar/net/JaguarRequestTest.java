@@ -12,6 +12,7 @@ import com.jaguar.BaseJaguarTest;
 import com.jaguar.Jaguar;
 import com.jaguar.exception.AuthenticationException;
 import com.jaguar.exception.JaguarException;
+
 import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.Test;
 

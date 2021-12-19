@@ -24,8 +24,8 @@ public class EventDataObjectDeserializerTest extends BaseJaguarTest {
   private static final String CURRENT_EVENT_VERSION = "2017-08-15";
   private static final String NO_MATCH_VERSION = "2000-08-15";
 
-  private void verifyDeserializedStripeObject(JaguarObject jaguarObject) {
-    final Application application = (Application) jaguarObject;
+  private void verifyDeserializedStripeObject(JaguarObject stripeObject) {
+    final Application application = (Application) stripeObject;
     assertNotNull(application);
     assertNotNull(application.getId());
     assertNotNull(application.getName());

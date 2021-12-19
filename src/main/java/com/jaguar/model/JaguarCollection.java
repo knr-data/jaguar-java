@@ -36,7 +36,7 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode(callSuper = false)
 public abstract class JaguarCollection<T extends HasId> extends JaguarObject
-    implements StripeCollectionInterface<T> {
+    implements JaguarCollectionInterface<T> {
   String object;
 
   @Getter(onMethod_ = {@Override})

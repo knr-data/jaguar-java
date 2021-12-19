@@ -11,6 +11,7 @@ import com.google.common.collect.ImmutableMap;
 import com.jaguar.BaseJaguarTest;
 import com.jaguar.exception.ApiConnectionException;
 import com.jaguar.exception.JaguarException;
+
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.util.Collections;

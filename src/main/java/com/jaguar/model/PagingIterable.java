@@ -7,9 +7,9 @@ import java.util.Iterator;
  * pages and which is suitable for use with a <code>{@code foreach}</code> loop.
  */
 public class PagingIterable<T extends HasId> implements Iterable<T> {
-  private StripeCollectionInterface<T> page;
+  private JaguarCollectionInterface<T> page;
 
-  PagingIterable(final StripeCollectionInterface<T> page) {
+  PagingIterable(final JaguarCollectionInterface<T> page) {
     this.page = page;
   }
 

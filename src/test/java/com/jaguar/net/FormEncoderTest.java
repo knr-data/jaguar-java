@@ -8,7 +8,6 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.annotations.SerializedName;
 import com.jaguar.BaseJaguarTest;
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.math.BigDecimal;

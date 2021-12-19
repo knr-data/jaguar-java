@@ -14,7 +14,7 @@ import com.google.gson.reflect.TypeToken;
 class ReflectionCheckingTypeAdapterFactory implements TypeAdapterFactory {
   @Override
   public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-    if (!type.getType().getTypeName().startsWith("com.stripe.")) {
+    if (!type.getType().getTypeName().startsWith("com.jaguar.")) {
       TypeAdapter<T> adapter = gson.getDelegateAdapter(this, type);
       if (adapter instanceof ReflectiveTypeAdapterFactory.Adapter) {
         throw new IllegalArgumentException(

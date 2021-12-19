@@ -4,7 +4,7 @@ import com.jaguar.net.RequestOptions;
 import java.util.List;
 import java.util.Map;
 
-public interface StripeCollectionInterface<T> extends JaguarObjectInterface {
+public interface JaguarCollectionInterface<T> extends JaguarObjectInterface {
   List<T> getData();
 
   Boolean getHasMore();

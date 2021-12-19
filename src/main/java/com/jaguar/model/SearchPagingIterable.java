@@ -9,9 +9,9 @@ import java.util.Iterator;
  * <p>Please note SearchPagingIterable is in beta and is subject to change or removal at any time.
  */
 public class SearchPagingIterable<T> implements Iterable<T> {
-  private StripeSearchResultInterface<T> page;
+  private JaguarSearchResultInterface<T> page;
 
-  SearchPagingIterable(final StripeSearchResultInterface<T> page) {
+  SearchPagingIterable(final JaguarSearchResultInterface<T> page) {
     this.page = page;
   }
 

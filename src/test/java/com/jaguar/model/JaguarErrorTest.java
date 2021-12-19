@@ -8,7 +8,7 @@ import com.jaguar.BaseJaguarTest;
 import com.jaguar.net.ApiResource;
 import org.junit.jupiter.api.Test;
 
-public class StripeErrorTest extends BaseJaguarTest {
+public class JaguarErrorTest extends BaseJaguarTest {
   @Test
   public void testDeserialize() throws Exception {
     final String data = getResourceAsString("/api_fixtures/error_invalid_request.json");

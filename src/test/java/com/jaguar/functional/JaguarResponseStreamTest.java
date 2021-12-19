@@ -21,7 +21,7 @@ import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import org.junit.jupiter.api.Test;
 
-public class StripeResponseStreamTest extends BaseJaguarTest {
+public class JaguarResponseStreamTest extends BaseJaguarTest {
 
   private static class TestResource extends ApiResource implements HasId {
     @Getter(onMethod_ = {@Override})

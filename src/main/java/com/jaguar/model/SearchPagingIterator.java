@@ -13,14 +13,14 @@ public class SearchPagingIterator<T> extends ApiResource implements Iterator<T> 
   private final String url;
 
   @SuppressWarnings("rawtypes")
-  private final Class<? extends StripeSearchResultInterface> collectionType;
+  private final Class<? extends JaguarSearchResultInterface> collectionType;
 
-  private StripeSearchResultInterface<T> currentSearchResult;
+  private JaguarSearchResultInterface<T> currentSearchResult;
   private Iterator<T> currentDataIterator;
 
   private String nextPage;
 
-  SearchPagingIterator(final StripeSearchResultInterface<T> stripeSearchResult) {
+  SearchPagingIterator(final JaguarSearchResultInterface<T> stripeSearchResult) {
     this.url = Jaguar.getApiBase() + stripeSearchResult.getUrl();
     this.nextPage = stripeSearchResult.getNextPage();
 
@@ -75,7 +75,7 @@ public class SearchPagingIterator<T> extends ApiResource implements Iterator<T> 
   }
 
   @SuppressWarnings("unchecked")
-  private StripeSearchResultInterface<T> search(
+  private JaguarSearchResultInterface<T> search(
       final Map<String, Object> params, final RequestOptions options) throws Exception {
     return ApiResource.requestSearchResult(url, params, collectionType, options);
   }

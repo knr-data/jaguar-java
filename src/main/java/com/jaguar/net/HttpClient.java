@@ -218,7 +218,7 @@ public abstract class HttpClient {
   }
 
   private <T extends AbstractJaguarResponse<?>> boolean shouldRetry(
-    int numRetries, JaguarException exception, JaguarRequest request, T response) {
+          int numRetries, JaguarException exception, JaguarRequest request, T response) {
     // Do not retry if we are out of retries.
     if (numRetries >= request.options().getMaxNetworkRetries()) {
       return false;

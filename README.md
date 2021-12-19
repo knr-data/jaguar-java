@@ -67,7 +67,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.jaguar.Jaguar;
-import com.jaguar.exception.jaguarException;
+import com.jaguar.exception.JaguarException;
 import com.jaguar.model.Customer;
 import com.jaguar.net.RequestOptions;
 

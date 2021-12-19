@@ -62,15 +62,15 @@ public class BaseJaguarTest {
                 }));
   }
 
-  /** Checks that jaguar-mock is running and up-to-date. */
+  /** Checks that stripe-mock is running and up-to-date. */
   @BeforeAll
-  public static void checkJaguarMock() throws Exception {
+  public static void checkStripeMock() throws Exception {
     if (JaguarMockProcess.start()) {
       port = JaguarMockProcess.getPort();
       return;
     }
 
-    port = System.getenv().get("JAGUAR_MOCK_PORT");
+    port = System.getenv().get("STRIPE_MOCK_PORT");
     if (port == null) {
       port = "12111";
     }
@@ -85,16 +85,16 @@ public class BaseJaguarTest {
     } catch (IOException e) {
       throw new RuntimeException(
           String.format(
-              "Couldn't reach jaguar-mock at `localhost:%s`. Is it "
+              "Couldn't reach stripe-mock at `localhost:%s`. Is it "
                   + "running? Please see README for setup instructions.",
               port));
     }
 
-    String version = conn.getHeaderField("Jaguar-Mock-Version");
+    String version = conn.getHeaderField("Stripe-Mock-Version");
     if (!"master".equals(version) && (compareVersions(version, MOCK_MINIMUM_VERSION) > 0)) {
       throw new RuntimeException(
           String.format(
-              "Your version of jaguar-mock (%s) is too old. The minimum "
+              "Your version of stripe-mock (%s) is too old. The minimum "
                   + "version to run this test suite is %s. Please see its "
                   + "repository for upgrade instructions.",
               version, MOCK_MINIMUM_VERSION));
@@ -106,7 +106,7 @@ public class BaseJaguarTest {
    * environment. This is required independent of how stripe-mock is started.
    */
   @BeforeEach
-  public void setUpJaguarMockUsage() {
+  public void setUpStripeMockUsage() {
     this.origApiBase = Jaguar.getApiBase();
     this.origUploadBase = Jaguar.getUploadBase();
     this.origApiKey = Jaguar.apiKey;
@@ -128,7 +128,7 @@ public class BaseJaguarTest {
    * was activated.
    */
   @AfterEach
-  public void tearDownJaguarMockUsage() {
+  public void tearDownStripeMockUsage() {
     ApiResource.setStripeResponseGetter(new LiveJaguarResponseGetter());
 
     Jaguar.overrideApiBase(this.origApiBase);
@@ -232,7 +232,7 @@ public class BaseJaguarTest {
 
   /**
    * Stubs an API request. This should rarely be necessary, but some endpoints are not supported by
-   * jaguar-mock yet.
+   * stripe-mock yet.
    *
    * @param method HTTP method (GET, POST or DELETE)
    * @param path request path (e.g. "/v1/charges"). Can also be an abolute URL.

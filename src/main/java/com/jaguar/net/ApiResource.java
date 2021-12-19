@@ -16,12 +16,12 @@ import com.jaguar.model.EventRequestDeserializer;
 import com.jaguar.model.ExpandableField;
 import com.jaguar.model.ExpandableFieldDeserializer;
 import com.jaguar.model.HasId;
-import com.jaguar.model.StripeCollectionInterface;
+import com.jaguar.model.JaguarCollectionInterface;
 import com.jaguar.model.JaguarObject;
 import com.jaguar.model.JaguarObjectInterface;
 import com.jaguar.model.JaguarRawJsonObject;
-import com.jaguar.model.StripeRawJsonObjectDeserializer;
-import com.jaguar.model.StripeSearchResultInterface;
+import com.jaguar.model.JaguarRawJsonObjectDeserializer;
+import com.jaguar.model.JaguarSearchResultInterface;
 import com.jaguar.util.StringUtils;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -50,7 +50,7 @@ public abstract class ApiResource extends JaguarObject {
             .registerTypeAdapter(EventData.class, new EventDataDeserializer())
             .registerTypeAdapter(EventRequest.class, new EventRequestDeserializer())
             .registerTypeAdapter(ExpandableField.class, new ExpandableFieldDeserializer())
-            .registerTypeAdapter(JaguarRawJsonObject.class, new StripeRawJsonObjectDeserializer());
+            .registerTypeAdapter(JaguarRawJsonObject.class, new JaguarRawJsonObjectDeserializer());
 
     for (TypeAdapterFactory factory : ApiResourceTypeAdapterFactoryProvider.getAll()) {
       builder.registerTypeAdapterFactory(factory);
@@ -197,7 +197,7 @@ public abstract class ApiResource extends JaguarObject {
     return ApiResource.jaguarResponseGetter.requestStream(method, url, params, options);
   }
 
-  public static <T extends StripeCollectionInterface<?>> T requestCollection(
+  public static <T extends JaguarCollectionInterface<?>> T requestCollection(
       String url, ApiRequestParams params, Class<T> clazz, RequestOptions options)
       throws JaguarException {
     checkNullTypedParams(url, params);
@@ -211,7 +211,7 @@ public abstract class ApiResource extends JaguarObject {
    * <p>Collections need a little extra work because we need to plumb request options and params
    * through so that we can iterate to the next page if necessary.
    */
-  public static <T extends StripeCollectionInterface<?>> T requestCollection(
+  public static <T extends JaguarCollectionInterface<?>> T requestCollection(
       String url, Map<String, Object> params, Class<T> clazz, RequestOptions options)
       throws JaguarException {
     T collection = request(RequestMethod.GET, url, params, clazz, options);
@@ -224,7 +224,7 @@ public abstract class ApiResource extends JaguarObject {
     return collection;
   }
 
-  public static <T extends StripeSearchResultInterface<?>> T requestSearchResult(
+  public static <T extends JaguarSearchResultInterface<?>> T requestSearchResult(
       String url, ApiRequestParams params, Class<T> clazz, RequestOptions options)
       throws JaguarException {
     checkNullTypedParams(url, params);
@@ -240,7 +240,7 @@ public abstract class ApiResource extends JaguarObject {
    * <p>Please note, requestSearchResult is beta functionality and is subject to charge or removal
    * at any time.
    */
-  public static <T extends StripeSearchResultInterface<?>> T requestSearchResult(
+  public static <T extends JaguarSearchResultInterface<?>> T requestSearchResult(
       String url, Map<String, Object> params, Class<T> clazz, RequestOptions options)
       throws JaguarException {
     T searchResult = request(RequestMethod.GET, url, params, clazz, options);

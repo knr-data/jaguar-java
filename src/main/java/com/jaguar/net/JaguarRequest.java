@@ -18,7 +18,7 @@ import lombok.AllArgsConstructor;
 import lombok.Value;
 import lombok.experimental.Accessors;
 
-/** A request to Jaguar's API. */
+/** A request to Stripe's API. */
 @Value
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Accessors(fluent = true)

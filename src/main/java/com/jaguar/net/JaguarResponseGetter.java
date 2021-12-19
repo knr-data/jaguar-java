@@ -29,6 +29,6 @@ public interface JaguarResponseGetter {
       RequestOptions options)
       throws JaguarException {
     throw new UnsupportedOperationException(
-        "requestStream is unimplemented for this JaguarResponseGetter");
+        "requestStream is unimplemented for this StripeResponseGetter");
   }
 }

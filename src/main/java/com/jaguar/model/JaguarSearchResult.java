@@ -15,7 +15,7 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode(callSuper = false)
 public abstract class JaguarSearchResult<T> extends JaguarObject
-    implements StripeSearchResultInterface<T> {
+    implements JaguarSearchResultInterface<T> {
   String object;
 
   @Getter(onMethod_ = {@Override})

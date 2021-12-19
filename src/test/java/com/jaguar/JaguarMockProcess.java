@@ -21,9 +21,9 @@ public class JaguarMockProcess {
   private static String pid;
 
   /**
-   * Start embedded jaguar-mock when spec and fixture resources are detected.
+   * Start embedded stripe-mock when spec and fixture resources are detected.
    *
-   * @return whether the jaguar-mock can be started and is now running.
+   * @return whether the stripe-mock can be started and is now running.
    */
   public static boolean start()
       throws IOException, InterruptedException, NoSuchFieldException, IllegalAccessException {
@@ -33,7 +33,7 @@ public class JaguarMockProcess {
     }
 
     if (process != null && isAlive(process)) {
-      System.out.println(String.format("jaguar-mock is already running, port = %s", port));
+      System.out.println(String.format("stripe-mock is already running, port = %s", port));
       return true;
     } else {
       // to reinitialize all properties
@@ -45,9 +45,9 @@ public class JaguarMockProcess {
     ProcessBuilder processBuilder =
         new ProcessBuilder()
             .command(
-                "jaguar-mock",
+                "stripe-mock",
                 "-http-port",
-                "0", // jaguar-mock to choose an available port
+                "0", // stripe-mock to choose an available port
                 "-spec",
                 getPathSpec(),
                 "-fixtures",
@@ -58,7 +58,7 @@ public class JaguarMockProcess {
     } catch (IOException e) {
       System.out.println(
           String.format(
-              "Error while starting jaguar-mock, fixtures = %s and %s, error message = %s",
+              "Error while starting stripe-mock, fixtures = %s and %s, error message = %s",
               getPathSpec(), getPathFixture(), e.getMessage()));
       System.exit(1);
     }
@@ -66,25 +66,25 @@ public class JaguarMockProcess {
     pid = getProcessId(process);
 
     if (isAlive(process)) {
-      System.out.println(String.format("Started jaguar-mock, PID = %s", pid));
-      System.out.println("Finding port bound to jaguar-mock...");
+      System.out.println(String.format("Started stripe-mock, PID = %s", pid));
+      System.out.println("Finding port bound to stripe-mock...");
       port = detectBoundPort(process);
       if (port == null) {
-        System.out.println(String.format("Unable to find port for jaguar-mock, PID = %s", pid));
+        System.out.println(String.format("Unable to find port for stripe-mock, PID = %s", pid));
         System.exit(1);
       }
     } else {
       System.out.println(
-          String.format("jaguar-mock terminated early, exit value = %d", process.exitValue()));
+          String.format("stripe-mock terminated early, exit value = %d", process.exitValue()));
       System.exit(1);
     }
 
     return true;
   }
 
-  /** Find port bound to jaguar-mock, relying on process output. */
+  /** Find port bound to stripe-mock, relying on process output. */
   private static String detectBoundPort(Process process) throws IOException, InterruptedException {
-    // output of jaguar-mock available as an input stream
+    // output of stripe-mock available as an input stream
     BufferedReader processOutput =
         new BufferedReader(new InputStreamReader(process.getInputStream(), StandardCharsets.UTF_8));
 
@@ -101,9 +101,9 @@ public class JaguarMockProcess {
   }
 
   /**
-   * Stop embedded jaguar-mock, and waits to return its exit value.
+   * Stop embedded stripe-mock, and waits to return its exit value.
    *
-   * @return jaguar-mock process exit value.
+   * @return stripe-mock process exit value.
    */
   public static int stop() throws InterruptedException {
     if (process == null) {
@@ -111,10 +111,10 @@ public class JaguarMockProcess {
     } else if (!isAlive(process)) {
       return process.exitValue();
     } else {
-      System.out.println("Stopping jaguar-mock...");
+      System.out.println("Stopping stripe-mock...");
       process.destroy();
       int exitValue = process.waitFor();
-      System.out.println(String.format("Stopped jaguar-mock, exit value = %d", exitValue));
+      System.out.println(String.format("Stopped stripe-mock, exit value = %d", exitValue));
       return exitValue;
     }
   }
